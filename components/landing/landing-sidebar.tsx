@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ExternalLink, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { landingNavLinks } from "@/lib/landing-nav";
@@ -65,6 +65,20 @@ export function LandingSidebar() {
     </button>
   );
 
+  const danknDevourCta = (
+    <a
+      href="https://www.dankndevour.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onNavClick}
+      className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/[0.03] px-3 py-2.5 text-sm font-semibold text-zinc-200 transition-colors hover:border-white/20 hover:bg-white/[0.06] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/40"
+    >
+      DanknDevour
+      <ExternalLink className="h-3.5 w-3.5 shrink-0 text-zinc-500" aria-hidden />
+      <span className="sr-only">Opens in a new tab</span>
+    </a>
+  );
+
   const brand = (
     <Link
       href="#top"
@@ -112,6 +126,7 @@ export function LandingSidebar() {
         {brand}
         {navList}
         {cta}
+        {danknDevourCta}
       </aside>
 
       {/* Mobile drawer + overlay */}
@@ -156,6 +171,7 @@ export function LandingSidebar() {
               {brand}
               {navList}
               {cta}
+              {danknDevourCta}
             </motion.div>
           </>
         ) : null}
