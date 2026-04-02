@@ -1,5 +1,6 @@
 import { AnimatedBoxSection } from "@/components/landing/animated-box";
 import { HeroSection } from "@/components/landing/hero-section";
+import { LandingShell } from "@/components/landing/landing-shell";
 import { LandingSidebar } from "@/components/landing/landing-sidebar";
 import { PricingSection } from "@/components/landing/pricing-section";
 
@@ -8,6 +9,7 @@ import { PricingSection } from "@/components/landing/pricing-section";
  */
 export default function Home() {
   return (
+    <LandingShell>
     <div className="relative min-h-screen overflow-x-hidden bg-[#050505] text-white">
       {/* Cinematic base + hero glow + vertical falloff */}
       <div
@@ -39,5 +41,6 @@ export default function Home() {
         </main>
       </div>
     </div>
+    </LandingShell>
   );
 }

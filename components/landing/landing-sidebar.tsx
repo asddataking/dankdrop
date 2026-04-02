@@ -5,11 +5,13 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { landingNavLinks } from "@/lib/landing-nav";
+import { useWaitlist } from "./waitlist-provider";
 
 const SIDEBAR_W = "w-[220px]";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function LandingSidebar() {
+  const { openWaitlist } = useWaitlist();
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
@@ -51,13 +53,16 @@ export function LandingSidebar() {
   );
 
   const cta = (
-    <a
-      href="#access"
-      onClick={onNavClick}
-      className="mt-6 block rounded-xl border border-violet-500/40 bg-gradient-to-b from-violet-600 to-purple-800 px-3 py-3 text-center text-sm font-semibold text-white shadow-[0_0_24px_-6px_rgba(139,92,246,0.5)] transition-colors hover:from-violet-500 hover:to-purple-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/55"
+    <button
+      type="button"
+      onClick={() => {
+        onNavClick();
+        openWaitlist();
+      }}
+      className="mt-6 block w-full rounded-xl border border-violet-500/40 bg-gradient-to-b from-violet-600 to-purple-800 px-3 py-3 text-center text-sm font-semibold text-white shadow-[0_0_24px_-6px_rgba(139,92,246,0.5)] transition-colors hover:from-violet-500 hover:to-purple-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/55"
     >
       Join for $1
-    </a>
+    </button>
   );
 
   const brand = (

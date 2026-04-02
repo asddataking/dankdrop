@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import type { PricingAccent } from "@/lib/landing-data";
+import { useWaitlist } from "./waitlist-provider";
 
 export type PricingCardProps = {
   tier: string;
@@ -71,6 +72,7 @@ export function PricingCard({
   emphasized,
   index = 0,
 }: PricingCardProps) {
+  const { openWaitlist } = useWaitlist();
   const reduceMotion = useReducedMotion();
   const a = accentStyles[accent];
 
@@ -151,9 +153,10 @@ export function PricingCard({
 
         <motion.button
           type="button"
+          onClick={openWaitlist}
           whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-          className={`mt-auto w-full rounded-xl px-4 py-3.5 text-center text-sm font-semibold transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d0d0f] ${a.cta} ${a.ctaFocus}`}
-          aria-label={`${ctaLabel} — ${tier}`}
+          className={`mt-auto w-full cursor-pointer rounded-xl px-4 py-3.5 text-center text-sm font-semibold transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0d0d0f] ${a.cta} ${a.ctaFocus}`}
+          aria-label={`${ctaLabel} — ${tier} — opens waitlist`}
         >
           {ctaLabel}
         </motion.button>

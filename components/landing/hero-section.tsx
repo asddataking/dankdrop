@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Lock, Sparkles, Truck } from "lucide-react";
+import { useWaitlist } from "./waitlist-provider";
 
 const easePremium = [0.16, 1, 0.3, 1] as const;
 
@@ -25,6 +26,7 @@ const highlights = [
 
 export function HeroSection() {
   const reduceMotion = useReducedMotion();
+  const { openWaitlist } = useWaitlist();
 
   return (
     <header className="relative flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center px-5 pb-16 pt-6 sm:px-8 sm:pb-24 sm:pt-8 lg:min-h-[100dvh] lg:pb-28 lg:pt-4">
@@ -119,15 +121,16 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.36, ease: easePremium }}
               className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
             >
-              <motion.a
-                href="#access"
+              <motion.button
+                type="button"
+                onClick={openWaitlist}
                 whileHover={reduceMotion ? undefined : { scale: 1.02 }}
                 whileTap={reduceMotion ? undefined : { scale: 0.98 }}
                 transition={{ duration: 0.22, ease: easePremium }}
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-b from-violet-400 via-fuchsia-500 to-purple-700 px-10 py-4 text-sm font-semibold text-white shadow-[0_12px_40px_-8px_rgba(139,92,246,0.55)] transition-shadow hover:shadow-[0_20px_50px_-6px_rgba(168,85,247,0.6)] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0c]"
+                className="inline-flex cursor-pointer items-center justify-center rounded-full bg-gradient-to-b from-violet-400 via-fuchsia-500 to-purple-700 px-10 py-4 text-sm font-semibold text-white shadow-[0_12px_40px_-8px_rgba(139,92,246,0.55)] transition-shadow hover:shadow-[0_20px_50px_-6px_rgba(168,85,247,0.6)] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0c]"
               >
                 Join Early Access
-              </motion.a>
+              </motion.button>
               <motion.a
                 href="#access"
                 whileHover={reduceMotion ? undefined : { scale: 1.01 }}
