@@ -10,7 +10,7 @@ export function PricingSection() {
   return (
     <section
       id="access"
-      className="relative mx-auto w-full max-w-6xl px-5 pb-24 pt-8 sm:px-8 md:pb-32 md:pt-12"
+      className="relative mx-auto w-full max-w-6xl px-5 pb-24 pt-2 sm:px-8 md:pb-32 md:pt-4"
       aria-labelledby="pricing-heading"
     >
       <motion.div

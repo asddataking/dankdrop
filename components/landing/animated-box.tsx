@@ -21,7 +21,7 @@ export function AnimatedBoxSection() {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.7", "end 0.32"],
+    offset: ["start 0.72", "end 0.48"],
   });
 
   const lidTarget = useTransform(
@@ -46,7 +46,7 @@ export function AnimatedBoxSection() {
     <section
       ref={sectionRef}
       id="founders"
-      className="relative mx-auto min-h-[120vh] w-full max-w-4xl px-5 pb-12 pt-12 text-center sm:px-8 sm:pb-16 sm:pt-16 md:min-h-[135vh]"
+      className="relative mx-auto min-h-[92vh] w-full max-w-4xl px-5 pb-6 pt-10 text-center sm:px-8 sm:pb-8 sm:pt-12 md:min-h-[98vh]"
       aria-labelledby="founders-heading"
     >
       <motion.div
@@ -61,7 +61,7 @@ export function AnimatedBoxSection() {
         </p>
         <h2
           id="founders-heading"
-          className="mb-12 text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+          className="mb-8 text-2xl font-semibold tracking-tight text-white sm:mb-10 sm:text-3xl"
         >
           Drop #001 — Founders
         </h2>
@@ -114,7 +114,9 @@ export function AnimatedBoxSection() {
           </div>
         </div>
 
-        <p className="mt-14 text-lg text-zinc-400 sm:text-xl">Only 25 Boxes</p>
+        <p className="mt-8 text-lg text-zinc-400 sm:mt-10 sm:text-xl">
+          Only 25 Boxes
+        </p>
         <p className="mx-auto mt-4 max-w-md text-sm text-zinc-500 sm:text-base">
           First release. Limited quantity. No restocks.
         </p>
